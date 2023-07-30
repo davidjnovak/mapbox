@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firestore Properties</title>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+</head>
+<body>
+    <h1>Manage Properties</h1>
+
+    <form id="property-form">
+        <input type="hidden" id="property-id">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="nickname" placeholder="Nickname">
+        <select id="isActive">
+            <option value="">Select status...</option>
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <button type="submit">Save</button>
+    </form>
+
+    <ul id="properties"></ul>
+
+    <script src="properties.js"></script>
+</body>
+</html>
