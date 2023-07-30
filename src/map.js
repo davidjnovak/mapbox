@@ -23,7 +23,7 @@ map.on('load', function () {
   var properties = [
     new Property(
       'some more bullshit', 
-      'true', 
+      true, 
       34.199719207021865, 
       -77.80212226925718, 
       '123 1st Street, Wrightsville Beach, NC, 12345',
@@ -31,7 +31,7 @@ map.on('load', function () {
     ),
     new Property(
       'some bullshit', 
-      'false', 
+      false, 
       34.20221167793872, 
       -77.79992233293612,
       '456 2nd Street, Wrightsville Beach, NC, 67890',
@@ -39,7 +39,7 @@ map.on('load', function () {
     ),
     new Property(
       'davids house lol', 
-      'true', 
+      true, 
       34.22035464520646, 
       -77.79015823190046,
       '789 3rd Street, Wrightsville Beach, NC, 28480',
@@ -69,14 +69,12 @@ map.on('load', function () {
             })
         }
     });
-    map.addLayer({
-        'id': 'properties',
-        'type': 'circle',
-        'source': 'properties',
-        'paint': {
-            'circle-radius': 10,
-            'circle-color': ['match', ['get', 'isActive'], 'true', 'blue', 'false', 'red', 'black']
-        }
+    properties.forEach(property => {
+      new mapboxgl.Marker({ 
+        color: property.isActive ? '#5940b3': '#cccccc'
+    })
+          .setLngLat([property.lng, property.lat])
+          .addTo(map);
     });
 
     // Show a popup when an property marker is clicked
