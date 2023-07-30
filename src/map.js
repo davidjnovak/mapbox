@@ -47,46 +47,23 @@ map.on('load', function () {
     ),
   ];
 
-    // Add a source and layer for the properties
-    map.addSource('properties', {
-        'type': 'geojson',
-        'data': {
-            'type': 'FeatureCollection',
-            'features': properties.map(function (property) {
-                return {
-                    'type': 'Feature',
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [property.lng, property.lat]
-                    },
-                    'properties': {
-                        'name': property.name,
-                        'isActive': property.isActive,
-                        'address': property.address,
-                        'nickname': property.nickname
-                    }
-                };
-            })
-        }
-    });
     properties.forEach(property => {
-      new mapboxgl.Marker({ 
-        color: property.isActive ? '#5940b3': '#cccccc'
-    })
-          .setLngLat([property.lng, property.lat])
-          .addTo(map);
-    });
-
-    // Show a popup when an property marker is clicked
-    map.on('click', 'properties', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.features[0].geometry.coordinates)
-            .setHTML(`
-            <h3>${e.features[0].properties.name}</h3>
-            <p>Nickname: ${e.features[0].properties.nickname}</p>
-            <p>Active: ${e.features[0].properties.isActive === 'true' ? 'Yes' : 'No'}</p>
-            <p>Address: ${e.features[0].properties.address}</p>
-        `)
-        .addTo(map);
-    });
+      var marker = new mapboxgl.Marker({ 
+          color: property.isActive ? '#5940b3': '#cccccc',
+          size: 'small',
+          shadow: 'false'
+      })
+      .setLngLat([property.lng, property.lat])
+      .addTo(map);
+  
+      var popup = new mapboxgl.Popup()
+          .setHTML(`
+              <h3>${property.name}</h3>
+              <p>Nickname: ${property.nickname}</p>
+              <p>Active: ${property.isActive ? 'Yes' : 'No'}</p>
+              <p>Address: ${property.address}</p>
+          `);
+  
+      marker.setPopup(popup);
+  });
 });
