@@ -615,6 +615,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 });
+let circleFeature50;
+let circleFeature75;
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
@@ -649,13 +651,7 @@ function createGeoJSONCircle(center, radiusInKm, points = 64) {
     }
   };
 }
-
-map.on('load', function() {
-  pelletPlants.forEach(plant => {
-    const circleFeature = createGeoJSONCircle(plant.coordinates, 80);
-    geojson.features.push(circleFeature);
-  });
-  
+function addCirclesToMap(){
   map.addSource('pelletPlantCircles', {
     type: 'geojson',
     data: geojson
@@ -671,7 +667,21 @@ map.on('load', function() {
       'fill-opacity': 0.6
     }
   });
+}
+function removeCirclesFromMap(){
+  map.removeSource('pelletPlantCircles');
+  map.removeLayer('pelletPlantCircleLayer');
+}
+map.on('load', function() {
+  pelletPlants.forEach(plant => {
+    circleFeature50 = createGeoJSONCircle(plant.coordinates, 80);
+    circleFeature75 = createGeoJSONCircle(plant.coordinates, 120);
+    geojson.features.push(circleFeature50); 
+    geojson.features.push(circleFeature75); 
+  });
   
+  addCirclesToMap()
+
   const geojsonPelletPlants = {
     type: 'FeatureCollection',
     features: pelletPlants.map(plant => {
@@ -691,11 +701,32 @@ map.on('load', function() {
     data: geojsonPelletPlants
   });
   let lossChart;
+  let currentPlant;
+  let currentData = '50';  // default value
+
+  document.getElementById('toggleButton').addEventListener('click', function() {
+      if (currentData === '50') {
+          lossChart.data.datasets[0].data = currentPlant.lossYear75.map(val => parseFloat(val));
+          lossChart.update();
+          // removeCirclesFromMap();
+          // geojson.features.push(circleFeature50); 
+          // // addCirclesToMap()
+
+          currentData = '75';
+          this.textContent = "Switch to 50 Miles";  // Update button text
+      } else {
+          lossChart.data.datasets[0].data = currentPlant.lossYear50.map(val => parseFloat(val));
+          lossChart.update();
+
+          currentData = '50';
+          this.textContent = "Switch to 75 Miles";  // Update button text
+      }
+  });
   function handlePlantClick(plant) {
+    currentPlant = plant;
     const canvas = document.getElementById("chart");
     const ctx = canvas.getContext('2d');
     const CHART = document.getElementById("chart");
-    const firstPlant = plant;  // Assuming 'pelletPlants' is your data array
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (lossChart) {
       lossChart.destroy();
@@ -708,7 +739,7 @@ map.on('load', function() {
           labels: Array.from({ length: 20 }, (_, i) => (i + 1).toString()),
           datasets: [{
               label: plant.name + ' - Tree Loss in Hectares',
-              data: firstPlant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
+              data: currentPlant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
               tension: 0.1
