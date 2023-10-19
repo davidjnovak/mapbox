@@ -609,14 +609,12 @@ const plantData = [
 ]
 
 document.addEventListener('DOMContentLoaded', function() {
-  try {
-    // display first graph
-  } catch (error) {
-  }
 
 });
 let circleFeature50;
 let circleFeature75;
+let features50 = [];
+let features75 = [];
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
@@ -668,16 +666,30 @@ function addCirclesToMap(){
     }
   });
 }
+function updateCircleData(data) {
+  if (map.getSource('pelletPlantCircles')) {
+      map.getSource('pelletPlantCircles').setData(data);
+  }
+}
 function removeCirclesFromMap(){
   map.removeSource('pelletPlantCircles');
   map.removeLayer('pelletPlantCircleLayer');
 }
+let plantCircles = {};
 map.on('load', function() {
-  pelletPlants.forEach(plant => {
-    circleFeature50 = createGeoJSONCircle(plant.coordinates, 80);
-    circleFeature75 = createGeoJSONCircle(plant.coordinates, 120);
+  plantData.forEach(plant => {
+    coords = {lon: plant.lon, lat: plant.lat}
+    circleFeature50 = createGeoJSONCircle(coords, 80);
+    circleFeature75 = createGeoJSONCircle(coords, 120);
+    console.log(plant.id)
+    plantCircles[plant.id] = {
+      '50': createGeoJSONCircle(coords, 80),
+      '75': createGeoJSONCircle(coords, 120)
+  };
+    features50.push(circleFeature50);
+    features75.push(circleFeature75);
     geojson.features.push(circleFeature50); 
-    geojson.features.push(circleFeature75); 
+    // geojson.features.push(circleFeature75); 
   });
   
   addCirclesToMap()
@@ -706,11 +718,18 @@ map.on('load', function() {
 
   document.getElementById('toggleButton').addEventListener('click', function() {
       if (currentData === '50') {
+        if (lossChart){ 
           lossChart.data.datasets[0].data = currentPlant.lossYear75.map(val => parseFloat(val));
           lossChart.update();
-          // removeCirclesFromMap();
-          // geojson.features.push(circleFeature50); 
-          // // addCirclesToMap()
+        }
+          if (plantCircles[currentPlant.id]){ 
+            geojson.features = [];
+            features75.forEach(feature => { 
+              geojson.features.push(feature)
+            });
+
+            updateCircleData(geojson);
+          }
 
           currentData = '75';
           this.textContent = "Switch to 50 Miles";  // Update button text
@@ -718,10 +737,20 @@ map.on('load', function() {
           lossChart.data.datasets[0].data = currentPlant.lossYear50.map(val => parseFloat(val));
           lossChart.update();
 
+          if (plantCircles[currentPlant.id]){ 
+            geojson.features = [];
+            features50.forEach(feature => { 
+              geojson.features.push(feature)
+            });            
+            updateCircleData(geojson);
+          }
+
           currentData = '50';
           this.textContent = "Switch to 75 Miles";  // Update button text
       }
   });
+
+  
   function handlePlantClick(plant) {
     currentPlant = plant;
     const canvas = document.getElementById("chart");
@@ -732,7 +761,6 @@ map.on('load', function() {
       lossChart.destroy();
       lossChart = null; 
   }
-
     lossChart = new Chart(CHART, {
       type: "line",
       data: {
