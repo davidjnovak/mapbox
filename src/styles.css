@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;         /* Enables flexbox */
+    height: 100vh;         /* 100% of the viewport height */
+    overflow: hidden;      /* Prevents any possible scrollbars */
+}
+
+#map {
+    flex: 2;               /* Takes up 2 parts of the space */
+    height: 100%;          /* 100% height to fill the space */
+    border-right: 1px solid #ddd;  /* Optional: for a divider line */
+    position: relative;    /* Resetting positioning */
+    top: 0;                /* Resetting positioning */
+    bottom: 0;             /* Resetting positioning */
+    width: auto;           /* Resetting width */
+    z-index: 1;            /* Ensuring it's above other elements */
+}
+
+.sidebar {
+    flex: 1;               /* Takes up 1 part of the space */
+    height: 100%;          /* 100% height to fill the space */
+    padding: 20px;         /* Provides some spacing inside the sidebar */
+    box-sizing: border-box;   /* Ensures padding is included in the width */
+    background: #f6f6f6;      /* Optional: for a light gray background */
+    overflow-y: auto;      /* Allows vertical scroll if content overflows */
+}
+
+canvas#chart {
+    max-width: 100%;       /* Ensures the chart doesn't overflow the sidebar */
+    display: block;        /* Makes sure it takes the full width */
+    margin: 0 auto 20px;   /* Centers it with margin at the bottom */
+}
