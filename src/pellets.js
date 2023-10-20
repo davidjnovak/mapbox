@@ -532,7 +532,6 @@ map.on('load', function() {
     coords = {lon: plant.lon, lat: plant.lat}
     circleFeature50 = createGeoJSONCircle(coords, 80);
     circleFeature75 = createGeoJSONCircle(coords, 120);
-    console.log(plant.id)
     plantCircles[plant.id] = {
       '50': createGeoJSONCircle(coords, 80),
       '75': createGeoJSONCircle(coords, 120)
@@ -571,8 +570,10 @@ map.on('load', function() {
     //TODO make toggle work when no chart is displayed 
       if (currentData === '50') {
         if (lossChart){ 
-          lossChart.data.datasets[0].data = currentPlant.lossYear75.map(val => parseFloat(val));
-          lossChart.update();
+          lossChart.data.datasets[0].hidden = true;
+          lossChart.data.datasets[1].hidden = false;
+
+          lossChart.update()
         }
           if (plantCircles[currentPlant.id]){ 
             geojson.features = [];
@@ -586,8 +587,11 @@ map.on('load', function() {
           currentData = '75';
           this.textContent = "Switch to 50 Miles";  // Update button text
       } else {
-          lossChart.data.datasets[0].data = currentPlant.lossYear50.map(val => parseFloat(val));
-          lossChart.update();
+        lossChart.data.datasets[0].hidden = false;
+        lossChart.data.datasets[1].hidden = true;
+
+        lossChart.update()
+
 
           if (plantCircles[currentPlant.id]){ 
             geojson.features = [];
@@ -611,19 +615,28 @@ map.on('load', function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (lossChart) {
       lossChart.destroy();
-      lossChart = null; 
+      lossChart = null;
   }
     lossChart = new Chart(CHART, {
       type: "line",
       data: {
           labels: Array.from({ length: 20 }, (_, i) => (i + 1).toString()),
           datasets: [{
-              label: plant.name + ' - Tree Loss in Hectares',
+              label: plant.name + ' - Tree Loss within 50 Miles (Hectares)',
               data: currentPlant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
               fill: false,
               borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1
-          }]
+              tension: 0.1,
+              hidden: false,
+          },
+        {
+          label: plant.name + ' - Tree Loss within 75 Miles (Hectares)',
+          data: currentPlant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1,
+          hidden: true,
+      }]
       },
       options: {
           scales: {
