@@ -12,11 +12,11 @@ const plantData = [
     state: "LA",
     affectedPop: "183,793",
     port: "Baton Rouge",
-    maxCap: "525,000",
-    yearlyAcres: "12,600",
+    maxCap: 525000,
+    yearlyAcres: 12600,
     openYear: 2015,
-    potentialAcres: "113,400",
-    potentialPelllets: "4,725,000",
+    potentialAcres: 113400,
+    potentialPelllets: 4725000,
     lat: 32.9559,
     lon: -91.872,
     lossYear50: [24069.21, 23267.62, 20664.0, 26815.2, 30648.9, 26294.64, 25227.5, 24022.72, 23919.1, 27235.55, 22545.48, 21276.73, 24600.28, 28786.49, 27676.47, 29551.06, 29007.46, 25516.96, 19673.8, 12451.43, 14648.88],
@@ -31,11 +31,11 @@ const plantData = [
     state: "MS",
     affectedPop: "60,286",
     port: "Baton Rouge",
-    maxCap: "525,000",
-    yearlyAcres: "12,600",
+    maxCap: 525000,
+    yearlyAcres: 12600,
     openYear: 2015,
-    potentialAcres: "113,400",
-    potentialPelllets: "4,725,000",
+    potentialAcres: "113400",
+    potentialPelllets: 4725000,
     lat: 31.1849,
     lon: -91.0377,
     lossYear50: [20113.01, 17591.51, 19698.1, 18869.25, 25349.32, 16919.49, 20690.15, 21922.08, 16293.62, 19838.42, 17558.75, 21501.74, 24149.88, 24714.19, 21900.64, 29316.68, 29599.21, 26422.39, 22293.97, 16942.16, 15380.0],
@@ -50,11 +50,11 @@ const plantData = [
     state: "LA",
     affectedPop: "33,210",
     port: "Baton Rouge",
-    maxCap: "525,000",
-    yearlyAcres: "12,600",
+    maxCap: 525000,
+    yearlyAcres: 12600,
     openYear: 2017,
-    potentialAcres: "88,200",
-    potentialPelllets: "3,675,000",
+    potentialAcres: "88200",
+    potentialPelllets: 3675000,
     lat: 31.8785,
     lon: -92.2792,
     lossYear50: [26879.28, 23073.61, 19679.92, 28928.17, 31760.74, 29230.51, 31747.11, 28156.2, 23057.72, 25944.01, 25098.71, 26356.07, 27522.63, 27850.97, 26557.29, 26772.78, 28500.72, 22484.0, 20199.63, 16811.52, 16362.64],
@@ -69,11 +69,11 @@ const plantData = [
     state: "MS",
     affectedPop: "38,392",
     port: "Pascagoula",
-    maxCap: "1,400,000",
-    yearlyAcres: "33,600",
+    maxCap: 1400000,
+    yearlyAcres: 33600,
     openYear: 2022,
-    potentialAcres: "67,200",
-    potentialPelllets: "2,800,000",
+    potentialAcres: "67200",
+    potentialPelllets: 2800000,
     lat: 30.9188,
     lon: -88.5503,
     lossYear50: [23349.42, 18982.83, 20549.38, 20018.78, 27093.71, 25553.21, 28909.29, 23815.61, 15650.12, 20774.41, 18910.52, 20685.62, 18494.65, 22840.49, 22838.23, 29994.87, 26041.11, 26849.99, 20825.2, 17830.03, 17331.47],
@@ -88,11 +88,11 @@ const plantData = [
     state: "GA",
     affectedPop: "85,189",
     port: "Savannah",
-    maxCap: "800,000",
-    yearlyAcres: "19,200",
+    maxCap: 800000,
+    yearlyAcres: 19200,
     openYear: 2011,
-    potentialAcres: "249,600",
-    potentialPelllets: "10,400,000",
+    potentialAcres: "249600",
+    potentialPelllets: 10400000,
     lat: 31.2565,
     lon: -82.4114,
     lossYear50: [37993.58, 36037.9, 26806.75, 36432.15, 32164.2, 37655.74, 60628.21, 35834.63, 27349.56, 38311.34, 61131.6, 52787.66, 45840.2, 47455.8, 44793.26, 50624.76, 75964.88, 36330.83, 35086.12, 28714.34, 28287.06],
@@ -107,11 +107,11 @@ const plantData = [
     state: "NC",
     affectedPop: "86,679",
     port: "Chesapeake",
-    maxCap: "750,000",
-    yearlyAcres: "18,000",
+    maxCap: 750000,
+    yearlyAcres: 18000,
     openYear: 2013,
-    potentialAcres: "198,000",
-    potentialPelllets: "8,250,000",
+    potentialAcres: "198000",
+    potentialPelllets: 8250000,
     lat: 36.5051,
     lon: -77.6114,
     lossYear50: [23013.18, 21343.83, 18409.54, 25270.19, 27546.47, 27752.11, 27083.12, 25504.37, 22700.68, 24080.33, 18457.51, 19672.38, 27496.23, 32020.22, 32692.21, 34838.82, 39442.77, 32467.64, 31362.58, 26956.65, 28438.68],
@@ -126,11 +126,11 @@ const plantData = [
     state: "VA",
     affectedPop: "1,538,744",
     port: "Chesapeake",
-    maxCap: "745,000",
-    yearlyAcres: "17,880",
+    maxCap: 745000,
+    yearlyAcres: 17880,
     openYear: 2015,
-    potentialAcres: "160,920",
-    potentialPelllets: "6,705,000",
+    potentialAcres: "160920",
+    potentialPelllets: 6705000,
     lat: 36.6534,
     lon: -76.9721,
     lossYear50: [21622.72, 20037.37, 15395.13, 23547.73, 25345.59, 24232.71, 23266.62, 22034.64, 20443.9, 19597.48, 14916.47, 17100.56, 20815.01, 24931.91, 24905.62, 27313.38, 31019.2, 24984.45, 22719.22, 20728.1, 19433.58],
@@ -145,11 +145,11 @@ const plantData = [
     state: "FL",
     affectedPop: "70,532",
     port: "Panama City",
-    maxCap: "730,000",
-    yearlyAcres: "17,520",
+    maxCap: 730000,
+    yearlyAcres: 17520,
     openYear: 2008,
-    potentialAcres: "280,320",
-    potentialPelllets: "11,680,000",
+    potentialAcres: "280320",
+    potentialPelllets: 11680000,
     lat: 30.7401,
     lon: -85.3911,
     lossYear50: [16091.63, 17019.19, 27392.61, 22580.86, 18445.35, 25878.92, 19835.14, 21791.45, 19909.37, 22136.2, 22184.47, 30138.34, 27336.9, 30463.52, 29404.77, 31770.41, 29554.06, 51750.25, 73466.59, 27017.82, 19050.93],
@@ -162,13 +162,13 @@ const plantData = [
     company: "Enviva",
     city: "Faison",
     state: "NC",
-    affectedPop: "48,515",
+    affectedPop: 48515,
     port: "Wilmington",
-    maxCap: "600,000",
-    yearlyAcres: "14,400",
+    maxCap: 600000,
+    yearlyAcres: 14400,
     openYear: 2016,
-    potentialAcres: "115,200",
-    potentialPelllets: "4,800,000",
+    potentialAcres: "115200",
+    potentialPelllets: 4800000,
     lat: 35.121,
     lon: -78.1839,
     lossYear50: [15874.57, 15160.5, 12474.95, 15626.57, 16784.89, 15806.37, 18133.8, 16288.56, 14963.66, 18589.08, 18957.02, 16529.84, 18111.74, 18739.14, 18859.85, 23103.42, 26917.79, 21931.0, 20573.41, 17602.66, 18041.02],
@@ -181,13 +181,13 @@ const plantData = [
     company: "Enviva",
     city: "Hamlet",
     state: "NC",
-    affectedPop: "125,393",
+    affectedPop: "125393",
     port: "Wilmington",
-    maxCap: "600,000",
-    yearlyAcres: "14,400",
+    maxCap: 600000,
+    yearlyAcres: 14400,
     openYear: 2019,
-    potentialAcres: "72,000",
-    potentialPelllets: "3,000,000",
+    potentialAcres: "72000",
+    potentialPelllets: 3000000,
     lat: 34.9337,
     lon: -79.6379,
     lossYear50: [22373.6, 19961.02, 12829.09, 23253.15, 22694.42, 23278.17, 20860.66, 18169.1, 14743.11, 21844.66, 16092.51, 22332.23, 21102.96, 23555.02, 28261.67, 30862.95, 30901.74, 26472.21, 23015.09, 22279.11, 21561.45],
@@ -202,11 +202,11 @@ const plantData = [
     state: "SC",
     affectedPop: "171,103",
     port: "Wilmington",
-    maxCap: "600,000",
-    yearlyAcres: "14,400",
+    maxCap: 600000,
+    yearlyAcres: 14400,
     openYear: 2018,
-    potentialAcres: "86,400",
-    potentialPelllets: "3,600,000",
+    potentialAcres: "86400",
+    potentialPelllets: 3600000,
     lat: 34.229,
     lon: -82.0634,
     lossYear50: [23868.67, 24833.61, 19348.16, 23784.85, 26850.82, 23088.66, 25324.12, 25715.26, 15382.44, 19846.33, 17685.9, 22428.34, 20517.5, 22425.19, 24209.62, 32319.9, 38413.71, 28624.0, 24979.81, 23034.46, 18573.6],
@@ -221,11 +221,11 @@ const plantData = [
     state: "NC",
     affectedPop: "66,278",
     port: "Chesapeake",
-    maxCap: "600,000",
-    yearlyAcres: "14,400",
+    maxCap: 600000,
+    yearlyAcres: 14400,
     openYear: 2011,
-    potentialAcres: "187,200",
-    potentialPelllets: "7,800,000",
+    potentialAcres: "187200",
+    potentialPelllets: 7800000,
     lat: 36.269,
     lon: -76.9656,
     lossYear50: [21875.7, 19766.38, 15387.83, 22326.06, 24504.21, 24374.69, 23493.33, 24667.4, 18198.05, 20654.28, 13785.85, 17611.26, 20411.65, 24873.08, 23682.91, 24996.81, 28245.97, 24061.24, 22576.37, 20785.65, 19335.43],
@@ -238,13 +238,13 @@ const plantData = [
     company: "Enviva",
     city: "Amory",
     state: "MS",
-    affectedPop: "83,118",
+    affectedPop: "83118",
     port: "Mobile",
-    maxCap: "120,000",
-    yearlyAcres: "2,880",
+    maxCap: 120000,
+    yearlyAcres: 2880,
     openYear: 2010,
-    potentialAcres: "40,320",
-    potentialPelllets: "1,680,000",
+    potentialAcres: "40320",
+    potentialPelllets: 1680000,
     lat: 33.9883,
     lon: -88.4951,
     lossYear50: [26258.08, 23638.41, 18941.27, 20561.97, 26554.13, 23520.79, 24641.37, 24047.19, 18057.31, 22056.28, 20711.14, 22446.53, 24743.79, 25203.02, 24245.77, 27658.02, 26142.58, 23189.06, 22357.3, 19438.73, 15990.67],
@@ -259,11 +259,11 @@ const plantData = [
     state: "GA",
     affectedPop: "72,977",
     port: "Brunswick",
-    maxCap: "500,000",
-    yearlyAcres: "12,000",
+    maxCap: 500000,
+    yearlyAcres: 12000,
     openYear: 2021,
-    potentialAcres: "36,000",
-    potentialPelllets: "1,500,000",
+    potentialAcres: "36000",
+    potentialPelllets: 1500000,
     lat: 31.8543,
     lon: -82.573,
     lossYear50: [29614.74, 25806.85, 20909.71, 32896.63, 32712.79, 35601.84, 33828.77, 30373.56, 24460.12, 32936.33, 38188.99, 47151.09, 45237.98, 40973.34, 37843.7, 46171.83, 43489.47, 39131.3, 37841.12, 29536.78, 32213.64],
@@ -278,11 +278,11 @@ const plantData = [
     state: "GA",
     affectedPop: "67,491",
     port: "Brunswick",
-    maxCap: "200,000",
-    yearlyAcres: "4,800",
+    maxCap: 200000,
+    yearlyAcres: 4800,
     openYear: 2009,
-    potentialAcres: "72,000",
-    potentialPelllets: "3,000,000",
+    potentialAcres: "72000",
+    potentialPelllets: 3000000,
     lat: 31.8167,
     lon: -82.4656,
     lossYear50: [30561.57, 26717.01, 22106.1, 33877.02, 32332.33, 36027.08, 37801.82, 31442.73, 24975.22, 33927.6, 39656.14, 47170.69, 46495.6, 42467.85, 38871.8, 46105.73, 43845.46, 38537.52, 37415.36, 30393.61, 32196.12],
@@ -297,11 +297,11 @@ const plantData = [
     state: "GA",
     affectedPop: "74,110",
     port: "Brunswick",
-    maxCap: "136,000",
-    yearlyAcres: "3,264",
+    maxCap: 136000,
+    yearlyAcres: 3264,
     openYear: 2018,
-    potentialAcres: "19,584",
-    potentialPelllets: "816,000",
+    potentialAcres: "19584",
+    potentialPelllets: 816000,
     lat: 31.2103,
     lon: -81.9555,
     lossYear50: [35541.24, 30780.75, 24777.71, 31465.82, 27956.0, 33318.07, 59105.5, 32452.97, 23305.87, 32103.52, 58094.18, 39464.79, 37054.82, 40984.7, 37994.67, 47046.16, 70632.68, 32094.21, 30428.88, 25008.17, 24355.69],
@@ -316,11 +316,11 @@ const plantData = [
     state: "GA",
     affectedPop: "63,169",
     port: "Brunswick",
-    maxCap: "136,000",
-    yearlyAcres: "3,264",
+    maxCap: 136000,
+    yearlyAcres: 3264,
     openYear: 2012,
-    potentialAcres: "39,168",
-    potentialPelllets: "1,632,000",
+    potentialAcres: "39168",
+    potentialPelllets: 1632000,
     lat: 31.9227,
     lon: -82.6795,
     lossYear50: [27628.06, 23457.85, 19859.7, 31630.66, 32528.87, 35400.71, 32385.92, 29882.69, 24164.85, 32527.36, 34038.17, 45639.61, 43104.56, 39198.03, 34852.49, 45148.86, 42620.37, 38722.53, 37045.12, 29601.76, 32476.39],
@@ -335,11 +335,11 @@ const plantData = [
     state: "AR",
     affectedPop: "86,412",
     port: "Baton Rouge",
-    maxCap: "750,000",
-    yearlyAcres: "18,000",
+    maxCap: 750000,
+    yearlyAcres: 18000,
     openYear: 2016,
-    potentialAcres: "144,000",
-    potentialPelllets: "6,000,000",
+    potentialAcres: "144000",
+    potentialPelllets: 6000000,
     lat: 34.2655,
     lon: -92.0671,
     lossYear50: [27184.97, 26662.57, 14991.82, 29916.27, 22632.14, 30276.1, 25194.88, 20693.93, 21747.77, 25611.73, 19780.2, 21090.96, 23548.22, 23797.42, 21106.56, 24145.17, 22870.49, 23606.9, 18474.91, 13466.31, 14004.37],
@@ -354,11 +354,11 @@ const plantData = [
     state: "AL",
     affectedPop: "76,951",
     port: "Mobile",
-    maxCap: "516,000",
-    yearlyAcres: "12,384",
+    maxCap: 516000,
+    yearlyAcres: 12384,
     openYear: 2011,
-    potentialAcres: "160,992",
-    potentialPelllets: "6,708,000",
+    potentialAcres: "160992",
+    potentialPelllets: 6708000,
     lat: 33.0764,
     lon: -88.2442,
     lossYear50: [29483.81, 25801.98, 23625.82, 25483.78, 32813.55, 28783.25, 31820.06, 31200.29, 22080.19, 26026.33, 30209.02, 31413.97, 32072.8, 34022.7, 32539.09, 35393.27, 34404.62, 27321.84, 27089.69, 20741.97, 19344.68],
@@ -373,11 +373,11 @@ const plantData = [
     state: "AL",
     affectedPop: "18,996",
     port: "Mobile",
-    maxCap: "443,000",
-    yearlyAcres: "10,632",
+    maxCap: 443000,
+    yearlyAcres: 10632,
     openYear: 2022,
-    potentialAcres: "21,264",
-    potentialPelllets: "886,000",
+    potentialAcres: "21264",
+    potentialPelllets: 886000,
     lat: 32.4664,
     lon: -87.9591,
     lossYear50: [34849.37, 28177.08, 31758.0, 31435.17, 36973.97, 36123.31, 41129.75, 42746.59, 29322.8, 32643.97, 35688.16, 39630.55, 34540.79, 41675.01, 39717.64, 43071.49, 43017.2, 33575.41, 32408.81, 26273.01, 24198.74],
@@ -392,11 +392,11 @@ const plantData = [
     state: "MS",
     affectedPop: "71,962",
     port: "Mobile",
-    maxCap: "360,000",
-    yearlyAcres: "8,640",
+    maxCap: 360000,
+    yearlyAcres: 8640,
     openYear: 2021,
-    potentialAcres: "25,920",
-    potentialPelllets: "1,080,000",
+    potentialAcres: "25920",
+    potentialPelllets: 1080000,
     lat: 32.0457,
     lon: -88.734,
     lossYear50: [35630.49, 28999.68, 32271.21, 34665.35, 41046.14, 30794.73, 39777.14, 39116.19, 29499.26, 37570.9, 31165.15, 38674.44, 36848.63, 43895.88, 42163.31, 50474.57, 48877.77, 37808.9, 35503.09, 31043.2, 26316.61],
@@ -411,11 +411,11 @@ const plantData = [
     state: "TN",
     affectedPop: "444,356",
     port: "Mobile",
-    maxCap: "240,000",
-    yearlyAcres: "5,760",
+    maxCap: 240000,
+    yearlyAcres: 5760,
     openYear: 2017,
-    potentialAcres: "40,320",
-    potentialPelllets: "1,680,000",
+    potentialAcres: "40320",
+    potentialPelllets: 1680000,
     lat: 35.0713,
     lon: -85.6264,
     lossYear50: [15736.34, 11651.82, 7300.97, 15012.59, 11545.09, 10702.35, 11081.27, 13824.82, 6127.27, 8292.13, 9767.16, 7320.59, 5907.71, 7093.4, 7608.43, 11785.79, 10990.41, 7029.41, 7064.52, 6236.4, 6120.06],
@@ -430,11 +430,11 @@ const plantData = [
     state: "AL",
     affectedPop: "149,582",
     port: "Mobile",
-    maxCap: "120,000",
-    yearlyAcres: "2,880",
+    maxCap: 120000,
+    yearlyAcres: 2880,
     openYear: 2018,
-    potentialAcres: "17,280",
-    potentialPelllets: "720,000",
+    potentialAcres: "17280",
+    potentialPelllets: 720000,
     lat: 34.276,
     lon: -86.0369,
     lossYear50: [14792.15, 13739.32, 9435.77, 17927.57, 13958.87, 14740.23, 13578.28, 15049.22, 8078.72, 11522.13, 15352.38, 11577.02, 10939.67, 12334.89, 12370.95, 19484.47, 21518.86, 12919.51, 11449.19, 9570.41, 8416.54],
@@ -449,11 +449,11 @@ const plantData = [
     state: "TX",
     affectedPop: "53,052",
     port: "Port Arthur",
-    maxCap: "500,000",
-    yearlyAcres: "12,000",
+    maxCap: 500000,
+    yearlyAcres: 12000,
     openYear: 2014,
-    potentialAcres: "120,000",
-    potentialPelllets: "5,000,000",
+    potentialAcres: "120000",
+    potentialPelllets: 5000000,
     lat: 30.7424,
     lon: -94.4322,
     lossYear50: [33621.89, 30877.05, 27121.35, 40365.85, 44099.86, 38421.48, 38368.04, 41596.73, 36674.21, 41612.32, 58057.97, 35867.62, 36525.68, 35758.89, 31835.22, 36367.2, 34742.06, 24656.17, 19486.46, 27830.29, 20056.73],
@@ -462,16 +462,16 @@ const plantData = [
   }
 ]
 
-document.addEventListener('DOMContentLoaded', function() {
-
+document.addEventListener('DOMContentLoaded', function() { 
 });
 let circleFeature50;
 let circleFeature75;
 let features50 = [];
 let features75 = [];
+let facilities = [];
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/mapbox/outdoors-v11',
   center: [-95, 38],
   zoom: 4
 });
@@ -522,7 +522,7 @@ function addCirclesToMap(){
 }
 function updateCircleData(data) {
   if (map.getSource('pelletPlantCircles')) {
-      map.getSource('pelletPlantCircles').setData(data);
+    map.getSource('pelletPlantCircles').setData(data);
   }
 }
 
@@ -535,15 +535,54 @@ map.on('load', function() {
     plantCircles[plant.id] = {
       '50': createGeoJSONCircle(coords, 80),
       '75': createGeoJSONCircle(coords, 120)
-  };
+    };
     features50.push(circleFeature50);
     features75.push(circleFeature75);
     geojson.features.push(circleFeature50); 
-    // geojson.features.push(circleFeature75); 
+  });
+  
+  const avg_75_loss_difference = [ 5723.60, -545.19, 13999.25, 51710.48, -11951.53, -11447.59, -6057.30, -16552.81, -7833.45, 1009.81, 3162.17, -5827.40, -1046.69, 75686.39, -12542.60, 17928.58, -10186.24, 7016.72, -3086.07, 76942.26, 76486.87, 6141.96, 6915.31, 13093.39 ];
+  const avg_50_loss_difference = [ 3328.39, -2851.73, 7924.76, 22254.24, -5466.16, -8559.76, -3153.43, -10730.89, -3887.93, 322.00, 1952.21, -1836.78, -92.92, 35091.46, -9107.97, 11967.62, -7323.53, 5164.20, -1495.55, 35188.42, 36768.70, 3490.23, 4039.07, 10644.33 ];
+  const invertedDifference = [ -3328.39, 2851.73, -7924.76, -22254.24, 5466.16, 8559.76, 3153.43, 10730.89, 3887.93, -322, -1952.21, 1836.78, 92.92, -35091.46, 9107.97, -11967.62, 7323.53, -5164.2, 1495.55, -35188.42, -36768.7, -3490.23, -4039.07, -10644.33 ]
+  const canvas2 = document.getElementById("scatter");
+  console.log(facilities)
+  new Chart(canvas2, {
+    type: 'scatter',
+    data: {
+      labels: facilities,
+      datasets: [
+        {
+          label: "Pellet Production vs. Increase in Loss",
+          data: invertedDifference.map((value, index) => ({
+            x: value,
+            y: plantData[index].potentialAcres  // assuming y-axis is the index/sequence of the data
+          })),
+          backgroundColor: 'rgb(77, 179, 98)'
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Increase in Loss'
+          },
+          type: 'linear',
+          position: 'bottom'
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Pellet Production'
+          },
+        }
+      }
+    }
   });
   
   addCirclesToMap()
-
+  
   const geojsonPelletPlants = {
     type: 'FeatureCollection',
     features: plantData.map(plant => {
@@ -565,92 +604,115 @@ map.on('load', function() {
   let lossChart;
   let currentPlant;
   let currentData = '50';  // default value
-
+  
   document.getElementById('toggleButton').addEventListener('click', function() {
     //TODO make toggle work when no chart is displayed 
-      if (currentData === '50') {
-        if (lossChart){ 
-          lossChart.data.datasets[0].hidden = true;
-          lossChart.data.datasets[1].hidden = false;
-
-          lossChart.update()
-        }
-          if (plantCircles[currentPlant.id]){ 
-            geojson.features = [];
-            features75.forEach(feature => { 
-              geojson.features.push(feature)
-            });
-
-            updateCircleData(geojson);
-          }
-
-          currentData = '75';
-          this.textContent = "Switch to 50 Miles";  // Update button text
-      } else {
-        lossChart.data.datasets[0].hidden = false;
-        lossChart.data.datasets[1].hidden = true;
-
+    if (currentData === '50') {
+      if (lossChart){ 
+        lossChart.data.datasets[0].hidden = true;
+        lossChart.data.datasets[1].hidden = false;
         lossChart.update()
-
-
-          if (plantCircles[currentPlant.id]){ 
-            geojson.features = [];
-            features50.forEach(feature => { 
-              geojson.features.push(feature)
-            });            
-            updateCircleData(geojson);
-          }
-
-          currentData = '50';
-          this.textContent = "Switch to 75 Miles";  // Update button text
       }
+      if (plantCircles[currentPlant.id]){ 
+        geojson.features = [];
+        features75.forEach(feature => { 
+          geojson.features.push(feature)
+        });
+        
+        updateCircleData(geojson);
+      }
+      
+      currentData = '75';
+      this.textContent = "Switch to 50 Miles";  // Update button text
+    } else {
+      lossChart.data.datasets[0].hidden = false;
+      lossChart.data.datasets[1].hidden = true;
+      lossChart.update()
+      
+      if (plantCircles[currentPlant.id]){ 
+        geojson.features = [];
+        features50.forEach(feature => { 
+          geojson.features.push(feature)
+        });            
+        updateCircleData(geojson);
+      }
+      currentData = '50';
+      this.textContent = "Switch to 75 Miles";  // Update button text
+    }
   });
-
   
   function handlePlantClick(plant) {
     currentPlant = plant;
+    // document.getElementById('toggleButton').textContent = "Switch to 75 Miles";
     const canvas = document.getElementById("chart");
     const ctx = canvas.getContext('2d');
-    const CHART = document.getElementById("chart");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (lossChart) {
       lossChart.destroy();
       lossChart = null;
-  }
-    lossChart = new Chart(CHART, {
+    }
+    const years = Array.from({ length: 21 }, (_, i) => (2000 + i).toString());
+    console.log(years);
+    lossChart = new Chart(canvas, {
       type: "line",
       data: {
-          labels: Array.from({ length: 20 }, (_, i) => (i + 1).toString()),
-          datasets: [{
-              label: plant.name + ' - Tree Loss within 50 Miles (Hectares)',
-              data: currentPlant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1,
-              hidden: false,
-          },
+        labels: years,
+        datasets: [{
+          label: plant.name + ' - Tree Loss within 50 Miles (Hectares)',
+          data: plant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
+          fill: false,
+          borderColor: 'rgb(75, 150, 192)',
+          tension: 0.1,
+          hidden: false,
+        },
         {
           label: plant.name + ' - Tree Loss within 75 Miles (Hectares)',
-          data: currentPlant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
+          data: plant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1,
           hidden: true,
-      }]
+        }]
       },
       options: {
-          scales: {
-              y: {
-                  beginAtZero: true
+        plugins: {
+          annotation: {
+            annotations: {
+              line1: {
+                type: 'line',
+                xMin: plant.openYear.toString(),
+                xMax: plant.openYear.toString(),
+                borderColor: 'rgb(255, 128, 154)',
+                borderWidth: 2,
               }
+            }
           }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Year'
+            },
+            type: 'linear',
+            position: 'bottom'
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Yearly Tree Loss'
+            },
+            beginAtZero: true
+          }
+        }
       }
-  });
-
-}
+    });
+    
+  }
   
   
   plantData.forEach(plant => {
+    facilities.push(plant.name)
     const marker = new mapboxgl.Marker()
     .setLngLat([plant.lon, plant.lat])
     .addTo(map);
