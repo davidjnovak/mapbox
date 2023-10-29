@@ -469,6 +469,8 @@ let circleFeature75;
 let features50 = [];
 let features75 = [];
 let facilities = [];
+let facilityColors = []
+let scatterChart;
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/outdoors-v11',
@@ -525,10 +527,38 @@ function updateCircleData(data) {
     map.getSource('pelletPlantCircles').setData(data);
   }
 }
-
+function resetColors(){
+  facilityColors = [
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)",
+    "rgb(77, 179, 98)"
+]
+}
 let plantCircles = {};
 map.on('load', function() {
   plantData.forEach(plant => {
+    facilities.push(plant.name)
     coords = {lon: plant.lon, lat: plant.lat}
     circleFeature50 = createGeoJSONCircle(coords, 80);
     circleFeature75 = createGeoJSONCircle(coords, 120);
@@ -540,13 +570,12 @@ map.on('load', function() {
     features75.push(circleFeature75);
     geojson.features.push(circleFeature50); 
   });
-  
   const avg_75_loss_difference = [ 5723.60, -545.19, 13999.25, 51710.48, -11951.53, -11447.59, -6057.30, -16552.81, -7833.45, 1009.81, 3162.17, -5827.40, -1046.69, 75686.39, -12542.60, 17928.58, -10186.24, 7016.72, -3086.07, 76942.26, 76486.87, 6141.96, 6915.31, 13093.39 ];
   const avg_50_loss_difference = [ 3328.39, -2851.73, 7924.76, 22254.24, -5466.16, -8559.76, -3153.43, -10730.89, -3887.93, 322.00, 1952.21, -1836.78, -92.92, 35091.46, -9107.97, 11967.62, -7323.53, 5164.20, -1495.55, 35188.42, 36768.70, 3490.23, 4039.07, 10644.33 ];
   const invertedDifference = [ -3328.39, 2851.73, -7924.76, -22254.24, 5466.16, 8559.76, 3153.43, 10730.89, 3887.93, -322, -1952.21, 1836.78, 92.92, -35091.46, 9107.97, -11967.62, 7323.53, -5164.2, 1495.55, -35188.42, -36768.7, -3490.23, -4039.07, -10644.33 ]
   const canvas2 = document.getElementById("scatter");
-  console.log(facilities)
-  new Chart(canvas2, {
+  resetColors();
+  scatterChart = new Chart(canvas2, {
     type: 'scatter',
     data: {
       labels: facilities,
@@ -555,9 +584,10 @@ map.on('load', function() {
           label: "Pellet Production vs. Increase in Loss",
           data: invertedDifference.map((value, index) => ({
             x: value,
-            y: plantData[index].potentialAcres  // assuming y-axis is the index/sequence of the data
+            y: plantData[index].potentialAcres / 2.471  // assuming y-axis is the index/sequence of the data
           })),
-          backgroundColor: 'rgb(77, 179, 98)'
+          backgroundColor: facilityColors,
+          pointRadius: 4.8
         }
       ]
     },
@@ -606,7 +636,6 @@ map.on('load', function() {
   let currentData = '50';  // default value
   
   document.getElementById('toggleButton').addEventListener('click', function() {
-    //TODO make toggle work when no chart is displayed 
     if (currentData === '50') {
       if (lossChart){ 
         lossChart.data.datasets[0].hidden = true;
@@ -643,7 +672,14 @@ map.on('load', function() {
   
   function handlePlantClick(plant) {
     currentPlant = plant;
-    // document.getElementById('toggleButton').textContent = "Switch to 75 Miles";
+    document.getElementById('plantName').innerHTML = plant.name;
+    document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
+    document.getElementById('openYear').innerHTML = "Open Year: " + plant.openYear;
+    resetColors()
+    facilityColors[plant.id - 1] = 'rgb(184, 72, 72)';
+    scatterChart.data.datasets[0].backgroundColor = facilityColors;
+    scatterChart.update();
+
     const canvas = document.getElementById("chart");
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -652,13 +688,12 @@ map.on('load', function() {
       lossChart = null;
     }
     const years = Array.from({ length: 21 }, (_, i) => (2000 + i).toString());
-    console.log(years);
     lossChart = new Chart(canvas, {
       type: "line",
       data: {
         labels: years,
         datasets: [{
-          label: plant.name + ' - Tree Loss within 50 Miles (Hectares)',
+          label: 'Tree Loss within 50 Miles (Hectares)       ',
           data: plant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
           fill: false,
           borderColor: 'rgb(75, 150, 192)',
@@ -666,12 +701,12 @@ map.on('load', function() {
           hidden: false,
         },
         {
-          label: plant.name + ' - Tree Loss within 75 Miles (Hectares)',
+          label: 'Tree Loss within 75 Miles (Hectares)       ',
           data: plant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1,
-          hidden: true,
+          hidden: false,
         }]
       },
       options: {
@@ -710,9 +745,7 @@ map.on('load', function() {
     
   }
   
-  
   plantData.forEach(plant => {
-    facilities.push(plant.name)
     const marker = new mapboxgl.Marker()
     .setLngLat([plant.lon, plant.lat])
     .addTo(map);
