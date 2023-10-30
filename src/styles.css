@@ -1,33 +1,62 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;         /* Enables flexbox */
-    height: 100vh;         /* 100% of the viewport height */
-    overflow: hidden;      /* Prevents any possible scrollbars */
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #map {
-    flex: 2;               /* Takes up 2 parts of the space */
-    height: 100%;          /* 100% height to fill the space */
-    border-right: 1px solid #ddd;  /* Optional: for a divider line */
-    position: relative;    /* Resetting positioning */
-    top: 0;                /* Resetting positioning */
-    bottom: 0;             /* Resetting positioning */
-    width: auto;           /* Resetting width */
-    z-index: 1;            /* Ensuring it's above other elements */
+    flex: 2;
+    height: 100%;
+    border-right: 1px solid #ddd;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    z-index: 1;
 }
 
 .sidebar {
-    flex: 1;               /* Takes up 1 part of the space */
-    height: 100%;          /* 100% height to fill the space */
-    padding: 20px;         /* Provides some spacing inside the sidebar */
-    box-sizing: border-box;   /* Ensures padding is included in the width */
-    background: #f6f6f6;      /* Optional: for a light gray background */
-    overflow-y: auto;      /* Allows vertical scroll if content overflows */
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    overflow-y: auto;
 }
 
-canvas#chart {
-    max-width: 100%;       /* Ensures the chart doesn't overflow the sidebar */
-    display: block;        /* Makes sure it takes the full width */
-    margin: 0 auto 20px;   /* Centers it with margin at the bottom */
+canvas#chart, canvas#scatter {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Button styling */
+#toggleButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 0; /* Space above and below the button */
+    transition: background-color 0.3s;
+}
+
+#toggleButton:hover {
+    background-color: #2980b9;
+}
+
+/* Info div styling */
+#info div {
+    background-color: #f7f7f7;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between each div */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -581,7 +581,7 @@ map.on('load', function() {
       labels: facilities,
       datasets: [
         {
-          label: "Pellet Production vs. Increase in Loss",
+          label: "Pellet Production vs. Change in Tree Loss",
           data: invertedDifference.map((value, index) => ({
             x: value,
             y: plantData[index].potentialAcres / 2.471  // assuming y-axis is the index/sequence of the data
