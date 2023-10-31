@@ -508,15 +508,14 @@ const plantData = [{
   changeInLoss75: 350.88
 }
 ]
-
-document.addEventListener('DOMContentLoaded', function() { 
-});
 let circleFeature50;
 let circleFeature75;
 let features50 = [];
 let features75 = [];
 let facilities = [];
-let facilityColors = []
+let facilityColors = [];
+let change50 = [];
+let change75 = [];
 let scatterChart;
 const map = new mapboxgl.Map({
   container: 'map',
@@ -606,6 +605,8 @@ let plantCircles = {};
 map.on('load', function() {
   plantData.forEach(plant => {
     facilities.push(plant.name)
+    change50.push(plant.changeInLoss50);
+    change75.push(plant.changeInLoss75);
     coords = {lon: plant.lon, lat: plant.lat}
     circleFeature50 = createGeoJSONCircle(coords, 80);
     circleFeature75 = createGeoJSONCircle(coords, 120);
