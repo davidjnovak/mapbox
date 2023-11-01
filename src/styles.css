@@ -33,7 +33,7 @@ canvas#chart, canvas#scatter {
 }
 
 /* Button styling */
-#toggleButton {
+#toggleCircles {
     background-color: #3498db;
     color: white;
     border: none;
@@ -45,6 +45,7 @@ canvas#chart, canvas#scatter {
 }
 
 #toggleButton:hover {
+    cursor: pointer;
     background-color: #2980b9;
 }
 
@@ -59,6 +60,22 @@ canvas#chart, canvas#scatter {
     text-align: center;
     border: 1px solid #e0e0e0;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+#info button {
+    background-color: #f7f7f7;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between each div */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+}
+
+#info button:hover {
+    cursor: pointer;
 }
 
 /* Info button styling */

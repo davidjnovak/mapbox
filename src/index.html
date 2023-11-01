@@ -15,13 +15,17 @@
             <button class="info-btn">i</button>
             <div class="info-textbox">A positive change in loss means that tree loss increased, on average, after operation began in the vicinitiy of that pellet mill. <br> <br> Pellet production represents the yearly number of acres a pellet mill is estimated to affect according to the SELC </div>
         </div>
-        <button id="toggleButton">Switch to 75 Miles</button>
+        <button id="toggleCircles">Switch Operational Radius</button>
+
         <div id="info">
             <div id="plantName">Click on a Pellet Mill <span></span></div>
             <div id="yearlyAcres">Yearly Acres <span></span></div>
             <div id="openYear">Open Year <span></span></div>
-        </div>
+            <button id="toggle75Miles">75 Miles</button>
+            <button id="toggle50Miles">50 Miles</button>
+        </div>  
         <div class="chart-container">
+
             <canvas id="chart" width="300" height="150"></canvas>
             <button class="info-btn">i</button>
             <div class="info-textbox">These values represent tree loss in the selected circle over time from 2000-2021. The red line is when the selected pellet mill began operation. <br> <br>The SELC estimates that pellet mills source their wood anywhere from 50 miles to 75 miles. Yearly loss was calculated for each of those values. </div>

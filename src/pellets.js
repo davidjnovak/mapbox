@@ -680,45 +680,58 @@ map.on('load', function() {
     data: geojsonPelletPlants
   });
   let lossChart;
-  let currentPlant;
+  let currentPlant = plantData[0];
   let currentData = '50';  // default value
   
-  document.getElementById('toggleButton').addEventListener('click', function() {
+  function toggleCircles(){
     if (currentData === '50') {
-      if (lossChart){ 
-        lossChart.data.datasets[0].hidden = true;
-        lossChart.data.datasets[1].hidden = false;
-        lossChart.update()
-      }
-      if (plantCircles[currentPlant.id]){ 
         geojson.features = [];
         features75.forEach(feature => { 
           geojson.features.push(feature)
         });
         
         updateCircleData(geojson);
-      }
-      
       currentData = '75';
       this.textContent = "Switch to 50 Miles";  // Update button text
     } else {
-      lossChart.data.datasets[0].hidden = false;
-      lossChart.data.datasets[1].hidden = true;
-      lossChart.update()
-      
-      if (plantCircles[currentPlant.id]){ 
         geojson.features = [];
         features50.forEach(feature => { 
           geojson.features.push(feature)
         });            
         updateCircleData(geojson);
-      }
+      
       currentData = '50';
       this.textContent = "Switch to 75 Miles";  // Update button text
     }
+  }
+
+  function toggle75Miles(){
+    if (lossChart){ 
+      lossChart.data.datasets[1].hidden = !lossChart.data.datasets[1].hidden;
+      lossChart.update()
+    }
+  }
+  function toggle50Miles(){
+    if (lossChart){
+      lossChart.data.datasets[0].hidden = !lossChart.data.datasets[0].hidden;
+      lossChart.update()
+    }
+  }
+
+  document.getElementById('toggleCircles').addEventListener('click', function() {
+    toggleCircles();
+  });
+  document.getElementById('toggle75Miles').addEventListener('click', function() {
+    toggle75Miles();
+  });
+  document.getElementById('toggle50Miles').addEventListener('click', function() {
+    toggle50Miles();
   });
   
   function handlePlantClick(plant) {
+    document.getElementById('toggle50Miles').style.visibility = "visible";
+    document.getElementById('toggle75Miles').style.visibility = "visible";
+
     currentPlant = plant;
     document.getElementById('plantName').innerHTML = plant.name;
     document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
@@ -759,6 +772,9 @@ map.on('load', function() {
       },
       options: {
         plugins: {
+          legend: {
+            display: false
+          },
           annotation: {
             annotations: {
               line1: {
