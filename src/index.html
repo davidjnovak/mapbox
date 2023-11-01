@@ -10,19 +10,35 @@
     <div id="map"></div>
     
     <div class="sidebar">
-        <canvas id="scatter" width="300" height="150"></canvas>
+        <div class="chart-container">
+            <canvas id="scatter" width="300" height="150"></canvas>
+            <button class="info-btn">i</button>
+            <div class="info-textbox">A positive change in loss means that tree loss increased, on average, after operation began in the vicinitiy of that pellet mill. <br> <br> Pellet production represents the yearly number of acres a pellet mill is estimated to affect according to the SELC </div>
+        </div>
         <button id="toggleButton">Switch to 75 Miles</button>
         <div id="info">
             <div id="plantName">Click on a Pellet Mill <span></span></div>
             <div id="yearlyAcres">Yearly Acres <span></span></div>
             <div id="openYear">Open Year <span></span></div>
         </div>
-        <canvas id="chart" width="300" height="150"></canvas>
+        <div class="chart-container">
+            <canvas id="chart" width="300" height="150"></canvas>
+            <button class="info-btn">i</button>
+            <div class="info-textbox">These values represent tree loss in the selected circle over time from 2000-2021. The red line is when the selected pellet mill began operation. <br> <br>The SELC estimates that pellet mills source their wood anywhere from 50 miles to 75 miles. Yearly loss was calculated for each of those values. </div>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script> 
         <script src='pellets.js'></script>
+        <script>
+            document.querySelectorAll('.info-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const textbox = e.target.nextElementSibling;
+                    textbox.style.display = (textbox.style.display === 'none' || textbox.style.display === '') ? 'block' : 'none';
+                });
+            });
+        </script>
     </div>
 </body>
 </html>
