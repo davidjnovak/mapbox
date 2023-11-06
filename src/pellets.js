@@ -563,7 +563,11 @@ function addCirclesToMap(){
     'source': 'pelletPlantCircles',
     'layout': {},
     'paint': {
-      'fill-color': '#007cbf',
+      'fill-color': [
+        'case',
+        ['==', ['get', 'active'], true], '#d32f2f',  // active plant color (red)
+        '#007cbf'                                  // default color (blue)
+      ],
       'fill-opacity': 0.6
     }
   });
@@ -572,6 +576,16 @@ function updateCircleData(data) {
   if (map.getSource('pelletPlantCircles')) {
     map.getSource('pelletPlantCircles').setData(data);
   }
+}
+function updateGeoJSONColor(clickedPlantId) {
+  geojson.features.forEach(feature => {
+    if (feature.properties && feature.properties.plantId === clickedPlantId) {
+      feature.properties.active = true;
+    } else {
+      feature.properties.active = false;
+    }
+  });
+  updateCircleData(geojson);
 }
 function resetColors(){
   facilityColors = [
@@ -608,8 +622,12 @@ map.on('load', function() {
     change50.push(plant.changeInLoss50);
     change75.push(plant.changeInLoss75);
     coords = {lon: plant.lon, lat: plant.lat}
+
     circleFeature50 = createGeoJSONCircle(coords, 80);
+    circleFeature50.properties = { plantId: plant.id };
     circleFeature75 = createGeoJSONCircle(coords, 120);
+    circleFeature75.properties = { plantId: plant.id };
+
     plantCircles[plant.id] = {
       '50': createGeoJSONCircle(coords, 80),
       '75': createGeoJSONCircle(coords, 120)
@@ -680,7 +698,6 @@ map.on('load', function() {
     data: geojsonPelletPlants
   });
   let lossChart;
-  let currentPlant = plantData[0];
   let currentData = '50';  // default value
   
   function toggleCircles(){
@@ -689,8 +706,8 @@ map.on('load', function() {
         features75.forEach(feature => { 
           geojson.features.push(feature)
         });
-        
         updateCircleData(geojson);
+
       currentData = '75';
       this.textContent = "Switch to 50 Miles";  // Update button text
     } else {
@@ -729,10 +746,10 @@ map.on('load', function() {
   });
   
   function handlePlantClick(plant) {
+    updateGeoJSONColor(plant.id);
     document.getElementById('toggle50Miles').style.visibility = "visible";
     document.getElementById('toggle75Miles').style.visibility = "visible";
 
-    currentPlant = plant;
     document.getElementById('plantName').innerHTML = plant.name;
     document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
     document.getElementById('openYear').innerHTML = "Open Year: " + plant.openYear;
