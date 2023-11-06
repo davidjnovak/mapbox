@@ -517,11 +517,107 @@ let facilityColors = [];
 let change50 = [];
 let change75 = [];
 let scatterChart;
+let lossChart;
+
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/outdoors-v11',
   center: [-95, 38],
   zoom: 4
+});
+
+function handlePlantClick(plant) {
+  updateGeoJSONColor(plant.id);
+  document.getElementById('toggle50Miles').style.visibility = "visible";
+  document.getElementById('toggle75Miles').style.visibility = "visible";
+
+  document.getElementById('plantName').innerHTML = plant.name;
+  document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
+  document.getElementById('openYear').innerHTML = "Open Year: " + plant.openYear;
+  resetColors()
+  facilityColors[plant.id - 1] = 'rgb(184, 72, 72)';
+  scatterChart.data.datasets[0].backgroundColor = facilityColors;
+  scatterChart.update();
+
+  const canvas = document.getElementById("chart");
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (lossChart) {
+    lossChart.destroy();
+    lossChart = null;
+  }
+  const years = Array.from({ length: 22 }, (_, i) => (2000 + i).toString());
+  lossChart = new Chart(canvas, {
+    type: "line",
+    data: {
+      labels: years,
+      datasets: [{
+        label: 'Tree Loss within 50 Miles (Hectares)       ',
+        data: plant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
+        fill: false,
+        borderColor: 'rgb(75, 150, 192)',
+        tension: 0.1,
+        hidden: false,
+      },
+      {
+        label: 'Tree Loss within 75 Miles (Hectares)       ',
+        data: plant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+        hidden: false,
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        annotation: {
+          annotations: {
+            line1: {
+              type: 'line',
+              xMin: plant.openYear.toString(),
+              xMax: plant.openYear.toString(),
+              borderColor: 'rgb(255, 128, 154)',
+              borderWidth: 2,
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Year'
+          },
+          type: 'linear',
+          position: 'bottom'
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Yearly Tree Loss'
+          },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  
+}
+
+const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+plantData.forEach((data) => {
+    let row = tableBody.insertRow();
+    let cellId = row.insertCell(0);
+    let cellName = row.insertCell(1);
+
+    cellId.innerHTML = data.id;
+    cellName.innerHTML = data.name;
+    cellName.style.cursor = "pointer";
+    cellName.onclick = () => handlePlantClick(data);
+
 });
 
 function createGeoJSONCircle(center, radiusInKm, points = 64) {
@@ -697,7 +793,6 @@ map.on('load', function() {
     type: 'geojson',
     data: geojsonPelletPlants
   });
-  let lossChart;
   let currentData = '50';  // default value
   
   function toggleCircles(){
@@ -745,86 +840,6 @@ map.on('load', function() {
     toggle50Miles();
   });
   
-  function handlePlantClick(plant) {
-    updateGeoJSONColor(plant.id);
-    document.getElementById('toggle50Miles').style.visibility = "visible";
-    document.getElementById('toggle75Miles').style.visibility = "visible";
-
-    document.getElementById('plantName').innerHTML = plant.name;
-    document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
-    document.getElementById('openYear').innerHTML = "Open Year: " + plant.openYear;
-    resetColors()
-    facilityColors[plant.id - 1] = 'rgb(184, 72, 72)';
-    scatterChart.data.datasets[0].backgroundColor = facilityColors;
-    scatterChart.update();
-
-    const canvas = document.getElementById("chart");
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (lossChart) {
-      lossChart.destroy();
-      lossChart = null;
-    }
-    const years = Array.from({ length: 22 }, (_, i) => (2000 + i).toString());
-    lossChart = new Chart(canvas, {
-      type: "line",
-      data: {
-        labels: years,
-        datasets: [{
-          label: 'Tree Loss within 50 Miles (Hectares)       ',
-          data: plant.lossYear50.map(val => parseFloat(val)),  // Ensure values are numbers
-          fill: false,
-          borderColor: 'rgb(75, 150, 192)',
-          tension: 0.1,
-          hidden: false,
-        },
-        {
-          label: 'Tree Loss within 75 Miles (Hectares)       ',
-          data: plant.lossYear75.map(val => parseFloat(val)),  // Ensure values are numbers
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1,
-          hidden: false,
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            display: false
-          },
-          annotation: {
-            annotations: {
-              line1: {
-                type: 'line',
-                xMin: plant.openYear.toString(),
-                xMax: plant.openYear.toString(),
-                borderColor: 'rgb(255, 128, 154)',
-                borderWidth: 2,
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Year'
-            },
-            type: 'linear',
-            position: 'bottom'
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Yearly Tree Loss'
-            },
-            beginAtZero: true
-          }
-        }
-      }
-    });
-    
-  }
   
   plantData.forEach(plant => {
     const marker = new mapboxgl.Marker()

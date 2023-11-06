@@ -61,6 +61,22 @@ canvas#chart, canvas#scatter {
     border: 1px solid #e0e0e0;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+table {
+    font-family: 'Roboto', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 #info button {
     background-color: #f7f7f7;
     padding: 10px 15px;
@@ -117,4 +133,8 @@ canvas#chart, canvas#scatter {
 .chart-container {
     position: relative;
     margin-bottom: 20px;
+}
+
+.tableName{
+    cursor: pointer;
 }
