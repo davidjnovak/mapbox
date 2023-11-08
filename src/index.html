@@ -13,7 +13,9 @@
         <div class="chart-container">
             <canvas id="scatter" width="300" height="150"></canvas>
             <button class="info-btn">i</button>
-            <div class="info-textbox">A positive change in loss means that tree loss increased, on average, after operation began in the vicinitiy of that pellet mill. <br> <br> Pellet production represents the yearly number of acres a pellet mill is estimated to affect according to the SELC </div>
+            <div class="info-textbox">
+                The scatter chart illustrates the correlation between the operational start of pellet mills and changes in tree loss in the surrounding area. A 'positive change in loss' reflects an increase in tree loss post-operation. <br> <br> 'Pellet production' estimates the mill's annual impact on forest acres based on SELC data. The correlation coefficient (R) is 0.775, indicating a strong positive relationship, while the coefficient of determination (R²) is 0.6, signifying that 60% of the changes in tree loss can be statistically explained by pellet production activities.
+            </div>
         </div>
         <button id="toggleCircles">Switch Operational Radius</button>
 
@@ -28,7 +30,9 @@
 
             <canvas id="chart" width="300" height="150"></canvas>
             <button class="info-btn">i</button>
-            <div class="info-textbox">These values represent tree loss in the selected circle over time from 2000-2021. The red line is when the selected pellet mill began operation. <br> <br>The SELC estimates that pellet mills source their wood anywhere from 50 miles to 75 miles. Yearly loss was calculated for each of those values. </div>
+            <div class="info-textbox">
+                This line chart presents the historical trend of tree loss within a certain distance from the selected pellet mill from 2000 to 2021. The red line marks the commencement of the pellet mill's operation. <br> <br> The data reflect varying estimates of the sourcing radius, at 50 miles and 75 miles, showing the annual tree loss calculated for these distances, as per SELC estimates.
+            </div>
         </div>
 
         <div class="table-container">
