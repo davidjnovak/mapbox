@@ -522,8 +522,8 @@ let lossChart;
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/outdoors-v11',
-  center: [-95, 38],
-  zoom: 4
+  center: [-85, 34],
+  zoom: 5
 });
 
 function handlePlantClick(plant) {
@@ -534,7 +534,7 @@ function handlePlantClick(plant) {
   document.getElementById('plantName').innerHTML = plant.name;
   document.getElementById('yearlyAcres').innerHTML = "Yearly Acres: " + plant.yearlyAcres;
   document.getElementById('openYear').innerHTML = "Open Year: " + plant.openYear;
-  resetColors()
+  resetColors() //comment out
   facilityColors[plant.id - 1] = 'rgb(184, 72, 72)';
   scatterChart.data.datasets[0].backgroundColor = facilityColors;
   scatterChart.update();
@@ -546,7 +546,7 @@ function handlePlantClick(plant) {
     lossChart.destroy();
     lossChart = null;
   }
-  const years = Array.from({ length: 22 }, (_, i) => (2000 + i).toString());
+  const years = Array.from({ length: 22 }, (_, i) => ( + i).toString());
   lossChart = new Chart(canvas, {
     type: "line",
     data: {
@@ -577,8 +577,8 @@ function handlePlantClick(plant) {
           annotations: {
             line1: {
               type: 'line',
-              xMin: plant.openYear.toString(),
-              xMax: plant.openYear.toString(),
+              xMin: (plant.openYear-2000).toString(),
+              xMax: (plant.openYear-2000).toString(),
               borderColor: 'rgb(255, 128, 154)',
               borderWidth: 2,
             }
@@ -589,7 +589,7 @@ function handlePlantClick(plant) {
         x: {
           title: {
             display: true,
-            text: 'Year'
+            text: 'Years since 2000'
           },
           type: 'linear',
           position: 'bottom'
@@ -678,7 +678,7 @@ function updateGeoJSONColor(clickedPlantId) {
     if (feature.properties && feature.properties.plantId === clickedPlantId) {
       feature.properties.active = true;
     } else {
-      feature.properties.active = false;
+      feature.properties.active = false; //comment out
     }
   });
   updateCircleData(geojson);
@@ -712,8 +712,10 @@ function resetColors(){
 ]
 }
 let plantCircles = {};
+let potentialAcres = [];
 map.on('load', function() {
   plantData.forEach(plant => {
+    potentialAcres.push(plant.potentialAcres)
     facilities.push(plant.name)
     change50.push(plant.changeInLoss50);
     change75.push(plant.changeInLoss75);
@@ -737,6 +739,8 @@ map.on('load', function() {
   const invertedDifference = [ -3328.39, 2851.73, -7924.76, -22254.24, 5466.16, 8559.76, 3153.43, 10730.89, 3887.93, -322, -1952.21, 1836.78, 92.92, -35091.46, 9107.97, -11967.62, 7323.53, -5164.2, 1495.55, -35188.42, -36768.7, -3490.23, -4039.07, -10644.33 ]
   const canvas2 = document.getElementById("scatter");
   resetColors();
+  console.log(invertedDifference)
+  console.log(potentialAcres);
   scatterChart = new Chart(canvas2, {
     type: 'scatter',
     data: {
@@ -842,9 +846,11 @@ map.on('load', function() {
   
   
   plantData.forEach(plant => {
-    const marker = new mapboxgl.Marker()
+    const el = document.getElementById(markerDiv);
+    const marker = new mapboxgl.Marker(el)  // Pass the element with the class
     .setLngLat([plant.lon, plant.lat])
     .addTo(map);
+
     marker.getElement().addEventListener('click', () => handlePlantClick(plant));
-  });
+});
 });

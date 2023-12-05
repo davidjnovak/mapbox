@@ -30,6 +30,7 @@ canvas#chart, canvas#scatter {
     max-width: 100%;
     display: block;
     margin: 0 auto 20px;
+    width: 100%;
 }
 
 /* Button styling */
@@ -136,5 +137,8 @@ table {
 }
 
 .tableName{
+    cursor: pointer;
+}
+.markerDiv {
     cursor: pointer;
 }
